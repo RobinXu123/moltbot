@@ -155,7 +155,7 @@ export async function handleSendChat(
 export async function refreshChat(host: ChatHost) {
   await Promise.all([
     loadChatHistory(host as unknown as MoltbotApp),
-    loadSessions(host as unknown as MoltbotApp),
+    loadSessions(host as unknown as MoltbotApp, { activeMinutes: 10 }),
     refreshChatAvatar(host),
   ]);
   scheduleChatScroll(host as unknown as Parameters<typeof scheduleChatScroll>[0], true);
